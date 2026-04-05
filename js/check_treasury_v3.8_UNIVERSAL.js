@@ -1,15 +1,14 @@
 /**
- * 🛡️ FoE CASH MONITOR v3.8 (Universal Edition)
+ * 🛡️ FoE CASH MONITOR v3.8.1 (Universal Edition)
  * © 2026 3lackghost. Created as an independent logic module.
  * 
  * LICENSE & LEGAL NOTICE:
  * This software is the intellectual property of 3lackghost.
- * Licensed under the GNU Affero General Public License (AGPL v3).
+ * Licensed under the GNU Affero General Public License (AGPL v3.0).
  * You are free to redistribute and/or modify this script under 
  * the terms of the AGPL license.
  * =================================================================
  */
-
 
 let TreasuryMonitor = {
     settings: {
@@ -28,7 +27,7 @@ let TreasuryMonitor = {
     },
 
     init: () => {
-        console.log("%c🛡️ FoE Universal Monitor v3.8 initialized", "color: #00ff00; font-weight: bold;");
+        console.log("%c🛡️ FoE Universal Monitor v3.8.1 initialized", "color: #00ff00; font-weight: bold;");
         if (typeof FoEProxy !== 'undefined') {
             FoEProxy.addHandler('GuildInnoService', 'getGuildGoods', (data) => {
                 if (data && data.responseData) TreasuryMonitor.processData(data.responseData);
@@ -44,19 +43,23 @@ let TreasuryMonitor = {
                 if (!reports[item.era]) reports[item.era] = { items: [], critical: false };
                 let perc = (item.value / limit) * 100;
                 if (perc < TreasuryMonitor.settings.criticalThresholdPercent) reports[item.era].critical = true;
-                let line = `${perc < 10 ? '🚨' : '🔸'} ${i18n('Goods.' + item.good_id)}: ${item.value.toLocaleString()} / ${limit.toLocaleString()} (${perc.toFixed(1)}%)`;
+                
+                // Kontrola existencie i18n prekladu
+                let goodName = (typeof i18n !== 'undefined') ? i18n('Goods.' + item.good_id) : item.good_id;
+                let line = `${perc < 10 ? '🚨' : '🔸'} ${goodName}: ${item.value.toLocaleString()} / ${limit.toLocaleString()} (${perc.toFixed(1)}%)`;
                 reports[item.era].items.push(line);
             }
         });
 
         for (let era in reports) {
-            let eraName = (i18n('Eras.' + era) || era).toUpperCase();
+            // Kontrola existencie i18n prekladu pre éru
+            let eraName = (typeof i18n !== 'undefined' ? i18n('Eras.' + era) : era).toUpperCase();
             let payload = {
                 embeds: [{
                     title: `🛡️ ${eraName} 🛡️`,
                     description: reports[era].items.join('\n'),
                     color: reports[era].critical ? 15548997 : 15105570,
-                    footer: { text: "v3.8 Universal • Developed by 3lackghost" }
+                    footer: { text: "v3.8.1 Universal • Developed by 3lackghost" }
                 }]
             };
             fetch(TreasuryMonitor.settings.webhookUrl, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
