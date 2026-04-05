@@ -20,5 +20,10 @@ Take full control of your guild's resources with an automated, high-precision mo
 
 ## ⚖️ License & Copyright
 This software is the intellectual property of **3lackghost**.  
-**© 2026 3lackghost. All rights reserved.**  
-Unauthorized redistribution or modification is prohibited. Contact: `3lackghost@gmail.com`.
+**© 2026 3lackghost.**
+
+Licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**. 
+You are free to redistribute and/or modify this script under the terms of this license.
+
+Contact: `3lackghost@gmail.com`
+
