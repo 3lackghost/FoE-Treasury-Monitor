@@ -1,4 +1,4 @@
-# 🛡️ FoE Treasury Monitor v3.8 - Universal Edition
+# 🛡️ FoE Treasury Monitor v3.8.1 - Universal Edition
 
 **Automated Guild Treasury management at your fingertips.**
 Take full control of your guild's resources with an automated, high-precision monitoring tool that sends real-time, color-coded reports directly to your **Discord**.
