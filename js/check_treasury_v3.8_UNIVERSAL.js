@@ -1,14 +1,15 @@
-/* 
- * =================================================================
- * 🛡️ FoE TREASURY MONITOR v3.8 (Universal Edition)
- * © 2026 3lackghost. All rights reserved.
+/**
+ * 🛡️ FoE CASH MONITOR v3.8 (Universal Edition)
+ * © 2026 3lackghost. Created as an independent logic module.
  * 
- * LEGAL NOTICE:
- * This software and its source code are the intellectual property 
- * of the author (3lackghost). Unauthorized redistribution or 
- * modification is prohibited.
+ * LICENSE & LEGAL NOTICE:
+ * This software is the intellectual property of 3lackghost.
+ * Licensed under the GNU Affero General Public License (AGPL v3).
+ * You are free to redistribute and/or modify this script under 
+ * the terms of the AGPL license.
  * =================================================================
  */
+
 
 let TreasuryMonitor = {
     settings: {
